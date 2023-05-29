@@ -91,21 +91,23 @@ X_train, X_test, y_train, y_test = \
 
 print("Divisão dos conjuntos de treino e teste")
 
-# lr_clf = LogisticRegression(random_state=0, max_iter=5000)
+lr_clf = LogisticRegression(random_state=0, max_iter=5000)
 # scores = cross_val_score(lr_clf, X_train, y_train, cv=5)
 # print(scores)
-#
-#
+scores = [0.42904936, 0.43043808, 0.42936498, 0.42945521, 0.43235907]
+
 # tree_clf = tree.DecisionTreeClassifier()
 # scores = cross_val_score(tree_clf, X_train, y_train, cv=5)
 # print(scores)
 
-
-# svm_clf = svm.SVC()
-# scores = cross_val_score(svm_clf, X_train, y_train, cv=5)
-# print(scores)
-
-
+#
 gnb_clf = GaussianNB()
-scores = cross_val_score(gnb_clf, X_train, y_train, cv=5)
-print(scores)
+# scores = cross_val_score(gnb_clf, X_train, y_train, cv=5)
+# print(scores)
+scores2 = [0.41244792, 0.41598283, 0.41314228, 0.41480967, 0.420428]
+
+from sklearn.metrics import classification_report
+
+lr_clf.fit(X_train, y_train)
+y_pred = lr_clf.predict(X_test)
+print(classification_report(y_test, y_pred ))
